@@ -1,0 +1,61 @@
+/* Ajustes generales */
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+/* Botón de selección de archivo */
+input[type="file"] {
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: all 0.3s;
+}
+
+input[type="file"]:hover {
+    background-color: #4a90e2;
+    color: white;
+}
+
+/* Tabla (si deseas personalizarla más allá de Bootstrap) */
+.table {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.bC{
+    margin-top: 15px;
+}
+
+.menu-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.menu-popup .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-popup .text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.menu-popup .bC {
+    margin-top: 10px;
+}
