@@ -1,24 +1,60 @@
-// Función para subir el archivo
-function uploadFile() {
+async function uploadFile() {
     const fileInput = document.getElementById("fileInput");
     if (fileInput.files.length === 0) {
         alert("Selecciona un archivo.");
         return;
     }
 
+    const file = fileInput.files[0];
     const formData = new FormData();
-    formData.append("archivo", fileInput.files[0]);
+    formData.append("archivo", file);
 
-    fetch("http://localhost:3000/upload", {
-        method: "POST",
-        body: formData,
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        fileInput.value = ""; // Limpiar el input
-    })
-    .catch(err => console.error(err));
+    const fileName = file.name.toLowerCase();
+    
+    if (file && formData && fileName) {
+        try {
+            await fetch("http://localhost:3000/upload", {
+                method: "POST",
+                body: formData
+            });
+            alert("Archivo subido correctamente");
+            
+
+        } catch (error) {
+            alert("Error al subir el archivo: " + error);
+        }
+    } else {
+        alert("Tipo de archivo no soportado.");
+    }
+}
+
+function showTableData(data) {
+    const tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = "";
+
+    if (data.length > 0) {
+        const headers = Object.keys(data[0]);
+        const tableHeaders = document.getElementById("tableHeaders");
+        tableHeaders.innerHTML = ""; 
+
+        headers.forEach(header => {
+            const th = document.createElement("th");
+            th.innerText = header;
+            tableHeaders.appendChild(th);
+        });
+
+        data.forEach(row => {
+            const tr = document.createElement("tr");
+            headers.forEach(header => {
+                const td = document.createElement("td");
+                td.innerText = row[header] || ""; 
+                tr.appendChild(td);
+            });
+            tableBody.appendChild(tr);
+        });
+    } else {
+        tableBody.innerHTML = "<tr><td colspan='100%'>No hay datos disponibles.</td></tr>";
+    }
 }
 
 function showFiles() {
@@ -26,7 +62,7 @@ function showFiles() {
         .then(response => response.json())
         .then(data => {
             const fileList = document.getElementById("fileList");
-            fileList.innerHTML = ""; // Limpiar la lista actual
+            fileList.innerHTML = ""; 
 
             if (data.length === 0) {
                 fileList.innerHTML = "<p>No hay archivos almacenados.</p>";
@@ -51,16 +87,14 @@ function showFiles() {
         .catch(err => console.error(err));
 }
 
-// Función para descargar el archivo
 function downloadFile(fileId) {
     fetch(`http://localhost:3000/archivo/${fileId}`)
-        .then(response => response.blob()) // Obtener el archivo como blob para descargar
+        .then(response => response.blob())
         .then(blob => {
-            // Crear un enlace de descarga
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = `archivo_${fileId}`; // Nombre de descarga (puedes personalizarlo)
-            link.click(); // Simula el clic en el enlace para iniciar la descarga
+            link.download = `archivo_${fileId}`; 
+            link.click(); 
         })
         .catch(err => {
             console.error(err);
@@ -68,18 +102,15 @@ function downloadFile(fileId) {
         });
 }
 
-// Función para abrir el pop-up
 document.getElementById("showFilesBtn").addEventListener("click", () => {
-    document.getElementById("filePopup").style.display = "block"; // Mostrar el pop-up
-    showFiles(); // Llamar a la función para cargar los archivos
+    document.getElementById("filePopup").style.display = "block"; 
+    showFiles(); 
 });
 
-// Función para cerrar el pop-up
 function closePopup() {
     document.getElementById("filePopup").style.display = "none"; // Ocultar el pop-up
 }
 
-// Función para ver el archivo
 function viewFile(fileId) {
     window.open(`http://localhost:3000/archivo/${fileId}`, "_blank");
 }

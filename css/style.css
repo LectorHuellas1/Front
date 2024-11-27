@@ -1,10 +1,12 @@
-/* Ajustes generales */
+/* Estilos globales */
 body {
     font-family: Arial, sans-serif;
 }
 
+/* Título principal */
 h1 {
     font-weight: 600;
+    font-size: 2.5em; /* Tamaño grande para pantallas grandes */
 }
 
 /* Botón de selección de archivo */
@@ -12,6 +14,8 @@ input[type="file"] {
     cursor: pointer;
     padding: 10px 15px;
     transition: all 0.3s;
+    max-width: 95%; 
+    
 }
 
 input[type="file"]:hover {
@@ -19,19 +23,21 @@ input[type="file"]:hover {
     color: white;
 }
 
-/* Tabla (si deseas personalizarla más allá de Bootstrap) */
+/* Tabla personalizada */
 .table {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .table th, .table td {
     vertical-align: middle;
+    font-size: 1em;
 }
 
-.bC{
+.bC {
     margin-top: 15px;
 }
 
+/* Ventana emergente */
 .menu-popup {
     display: none;
     position: fixed;
@@ -43,6 +49,8 @@ input[type="file"]:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
     border-radius: 8px;
+    width: 80%; /* Adaptable al tamaño de la pantalla */
+    max-width: 400px; /* Límite máximo */
 }
 
 .menu-popup .form-container {
@@ -56,6 +64,70 @@ input[type="file"]:hover {
     margin-bottom: 20px;
 }
 
-.menu-popup .bC {
-    margin-top: 10px;
+/* RESPONSIVIDAD */
+
+/* Ajustes para pantallas menores a 768px (tabletas y móviles) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .table {
+        font-size: 0.9em;
+    }
+
+    input[type="file"],
+    button {
+        width: 95%; /* Acomoda botones y campos al ancho completo */
+        margin-bottom: 10px;
+    }
+
+    .menu-popup {
+        width: 90%; /* Más espacio para dispositivos pequeños */
+    }
+
+    .menu-popup .text {
+        font-size: 1em; /* Reducir texto en ventanas pequeñas */
+    }
+}
+
+/* Ajustes para pantallas menores a 576px (móviles pequeños) */
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.8em;
+    }
+
+    .menu-popup {
+        padding: 15px; /* Reducir padding en dispositivos pequeños */
+    }
+}
+
+/* Logo principal */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 150px; /* Tamaño máximo del logo */
+    height: auto; /* Mantiene la proporción */
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Efecto de hover para dar interactividad */
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .logo {
+        max-width: 100px; /* Reduce el tamaño del logo en pantallas pequeñas */
+    }
 }

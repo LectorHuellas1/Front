@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visor de Registros de Huella</title>
-    <!-- Link a Bootstrap CSS -->
+    
+    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css"> <!-- Referencia a estilos personalizados si se requiere -->
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-light text-center py-5">
+    <div class="logo-container mb-4">
+        <img src="../img/logosena.png" alt="Logo Principal" class="logo">
+    </div>
     <div class="container">
+        <!-- Título principal -->
         <h1 class="mb-4 text-success">Visor de Registros de Huella</h1>
         
-        <div class="mb-3">
-            <input type="file" id="fileInput" accept=".html" class="btn btn-outline-success">
-            <button class="btn btn-primary" onclick="uploadFile()">Subir Archivo</button>
+        <!-- Sección para subir archivos -->
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 mb-2">
+                <input type="file" id="fileInput" accept=".html" class="btn btn-outline-success w-100">
+            </div>
+            <div class="col-12 col-md-6">
+                <button class="btn btn-primary w-100" onclick="uploadFile()">Subir Archivo</button>
+            </div>
         </div>
 
+        <!-- Tabla de datos -->
         <div class="table-responsive">
             <table id="dataTable" class="table table-bordered table-striped">
                 <thead class="thead-dark">
@@ -27,19 +42,20 @@
         </div>
     </div>
 
-<button id="showFilesBtn" class="btn btn-primary">Mostrar Archivos</button>
+    <!-- Botón para mostrar archivos -->
+    <button id="showFilesBtn" class="btn btn-primary mt-3">Mostrar Archivos</button>
 
-<div id="filePopup" style="display: none;">
-    <div style="position: fixed; top: 10%; left: 20%; width: 60%; height: 80%; background-color: white; padding: 20px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow-y: scroll;">
-        <h3>Archivos Subidos</h3>
-        <div id="fileList"></div>
-        <button onclick="closePopup()">Cerrar</button>
+    <!-- Ventana emergente para mostrar archivos -->
+    <div id="filePopup" class="menu-popup">
+        <div class="form-container">
+            <h3 class="text">Archivos Subidos</h3>
+            <div id="fileList"></div>
+            <button class="btn btn-secondary bC" onclick="closePopup()">Cerrar</button>
+        </div>
     </div>
-</div>
 
-    
-
-    <script src="../js/script.js"></script>
     <script src="../js/file.js"></script>
+    <script src="../js/script.js"></script>
 </body>
+
 </html>
