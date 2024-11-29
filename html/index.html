@@ -5,6 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/logosena.png" type="image/x-icon">
     <title>Visor de Registros de Huella</title>
     
     <!-- Bootstrap CSS -->
@@ -20,6 +21,7 @@
     <div class="container">
         <!-- Título principal -->
         <h1 class="mb-4 text-success">Visor de Registros de Huella</h1>
+        <button class="btn btn-primary w-30 mb-4" id="closeSessionButton">Cerrar sesión</button>
         
         <!-- Sección para subir archivos -->
         <div class="row mb-3">
@@ -56,6 +58,16 @@
 
     <script src="../js/file.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/user/chekUserToken.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const closeSessionButton = document.querySelector("#closeSessionButton");
+            closeSessionButton.addEventListener("click", () => {
+                document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                location.reload();
+            });
+        });
+    </script>
 </body>
 
 </html>
