@@ -1,61 +1,59 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/logosena.png" type="image/x-icon">
-    <title>Visor de Registros de Huella</title>
-    
-    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="../css/style.css">
+    <title>Visor de Registros de Huella</title>
 </head>
-<body class="bg-light text-center py-5">
-    <div class="logo-container mb-4">
-        <img src="../img/logosena.png" alt="Logo Principal" class="logo">
-    </div>
+<body>
     <div class="container">
-        <!-- Título principal -->
-        <h1 class="mb-4 text-success">Visor de Registros de Huella</h1>
-        <button class="btn btn-primary w-30 mb-4" id="closeSessionButton">Cerrar sesión</button>
-        
-        <!-- Sección para subir archivos -->
-        <div class="row mb-3">
-            <div class="col-12 col-md-6 mb-2">
-                <input type="file" id="fileInput" accept=".html" class="btn btn-outline-success w-100">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="../img/logosena.png" alt="Logo SENA" class="logo">
+        </div>
+
+        <!-- Título -->
+        <h1>Visor de Registros de Huella</h1>
+
+        <!-- Botón de cierre de sesión -->
+        <button id="closeSessionButton">Cerrar sesión</button>
+
+        <!-- Subir archivo -->
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 mb-3">
+                <label for="fileInput" id="fileLabel">Seleccionar Archivo</label>
+                <input type="file" id="fileInput" accept=".html">
             </div>
-            <div class="col-12 col-md-6">
-                <button class="btn btn-primary w-100" onclick="uploadFile()">Subir Archivo</button>
+            <div class="col-12 col-md-6 mb-3">
+                <button id="uploadFileButton">Subir Archivo</button>
             </div>
         </div>
 
-        <!-- Tabla de datos -->
+        <!-- Tabla -->
         <div class="table-responsive">
-            <table id="dataTable" class="table table-bordered table-striped">
-                <thead class="thead-dark">
+            <table id="dataTable" class="table">
+                <thead>
                     <tr id="tableHeaders"></tr>
                 </thead>
                 <tbody id="tableBody"></tbody>
             </table>
         </div>
-    </div>
 
-    <!-- Botón para mostrar archivos -->
-    <button id="showFilesBtn" class="btn btn-primary mt-3">Mostrar Archivos</button>
+        <!-- Botón para mostrar archivos -->
+        <button id="showFilesBtn" class="btn">Mostrar Archivos</button>
 
-    <!-- Ventana emergente para mostrar archivos -->
-    <div id="filePopup" class="menu-popup">
-        <div class="form-container">
-            <h3 class="text">Archivos Subidos</h3>
+        <!-- Ventana emergente -->
+        <div id="filePopup" class="menu-popup">
+            <h3>Archivos Subidos</h3>
             <div id="fileList"></div>
-            <button class="btn btn-secondary bC" onclick="closePopup()">Cerrar</button>
+            <button class="btn-danger" onclick="closePopup()">Cerrar</button>
         </div>
     </div>
-
     <script src="../js/file.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/user/chekUserToken.js"></script>
@@ -69,5 +67,4 @@
         });
     </script>
 </body>
-
 </html>

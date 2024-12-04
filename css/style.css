@@ -1,40 +1,145 @@
 /* Estilos globales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Título principal */
 h1 {
-    font-weight: 600;
-    font-size: 2.5em; /* Tamaño grande para pantallas grandes */
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-/* Botón de selección de archivo */
-input[type="file"] {
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    max-width: 120px;
+    height: auto;
+}
+
+/* Botones principales */
+button, input[type="file"] {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
-    padding: 10px 15px;
-    transition: all 0.3s;
-    max-width: 95%; 
-    
 }
 
-input[type="file"]:hover {
-    background-color: #4a90e2;
+/* Estilo general de botones */
+button {
+    display: inline-block;
+    margin: 0.5rem;
+    border: none;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón "Cerrar Sesión" */
+#closeSessionButton {
+    background-color: #dc3545;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#closeSessionButton:hover {
+    background-color: #b92d3c;
+}
+
+/* Botón "Subir Archivo" */
+#uploadFileButton {
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#uploadFileButton:hover {
+    background-color: #0056b3;
+}
+
+/* Botón "Mostrar Archivos" */
+#showFilesBtn {
+    background-color: #17b860;
+    color: white;
+    width: 100%;
+}
+
+#showFilesBtn:hover {
+    background-color: #117a8b;
+}
+
+/* Input "Subir Archivo" */
+input[type="file"] {
+    display: none; /* Oculto por defecto */
+}
+
+#fileLabel {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.8rem;
+    color: #28a745;
+    border: 2px dashed #28a745;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#fileLabel:hover {
+    background-color: #28a745;
     color: white;
 }
 
-/* Tabla personalizada */
+/* Tabla */
 .table {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
 }
 
-.table th, .table td {
-    vertical-align: middle;
-    font-size: 1em;
+.table thead th {
+    background-color: #343a40;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.8rem;
 }
 
-.bC {
-    margin-top: 15px;
+.table tbody td {
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid #ddd;
 }
 
 /* Ventana emergente */
@@ -44,90 +149,25 @@ input[type="file"]:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
     border-radius: 8px;
-    width: 80%; /* Adaptable al tamaño de la pantalla */
-    max-width: 400px; /* Límite máximo */
+    width: 90%;
+    max-width: 500px;
+    max-height: 400px;
+    overflow: scroll;
+    z-index: 1000;
+    justify-items: center;
 }
 
-.menu-popup .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.menu-popup h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.menu-popup .text {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-/* RESPONSIVIDAD */
-
-/* Ajustes para pantallas menores a 768px (tabletas y móviles) */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.8em;
-    }
-
-    .table {
-        font-size: 0.9em;
-    }
-
-    input[type="file"],
-    button {
-        width: 95%; /* Acomoda botones y campos al ancho completo */
-        margin-bottom: 10px;
-    }
-
-    .menu-popup {
-        width: 90%; /* Más espacio para dispositivos pequeños */
-    }
-
-    .menu-popup .text {
-        font-size: 1em; /* Reducir texto en ventanas pequeñas */
-    }
-}
-
-/* Ajustes para pantallas menores a 576px (móviles pequeños) */
-@media (max-width: 576px) {
-    h1 {
-        font-size: 1.5em;
-    }
-
-    .table th,
-    .table td {
-        font-size: 0.8em;
-    }
-
-    .menu-popup {
-        padding: 15px; /* Reducir padding en dispositivos pequeños */
-    }
-}
-
-/* Logo principal */
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.logo {
-    max-width: 150px; /* Tamaño máximo del logo */
-    height: auto; /* Mantiene la proporción */
-    transition: transform 0.3s ease-in-out;
-}
-
-.logo:hover {
-    transform: scale(1.1); /* Efecto de hover para dar interactividad */
-}
-
-/* Responsividad para pantallas pequeñas */
-@media (max-width: 768px) {
-    .logo {
-        max-width: 100px; /* Reduce el tamaño del logo en pantallas pequeñas */
-    }
+.menu-popup button {
+    width: 100%;
+    color: white;
 }
